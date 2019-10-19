@@ -15,9 +15,10 @@ import { DropdownDirective } from './shared/dropdown.directive';
 import { ShoppingListService } from './shopping-list/shopping-list.service';
 
 const appRoute = [
-  {path:'', component: RecipesComponent},
-  {path:'shopping-list', component: ShoppingListComponent},
-  {path:'recipes', component: RecipesComponent},
+  {path:'', component: RecipesComponent, children: [
+    {path:'recipe-list', component: RecipeListComponent}
+  ]},
+  {path:'shopping-list', component: ShoppingListComponent}
 ];
 
 @NgModule({
@@ -35,7 +36,7 @@ const appRoute = [
   imports: [
     BrowserModule,
     FormsModule,
-    RouterModule.forRoot(appRoute)
+    RouterModule.forRoot(appRoute,{useHash: true})
   ],
   providers: [ShoppingListService],
   bootstrap: [AppComponent]
