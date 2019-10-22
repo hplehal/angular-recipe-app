@@ -28,11 +28,11 @@ export class RecipeAddedComponent implements OnInit {
         }
       )
   }
-  
+
   onSubmit(){
     // const newRecipe = new Recipe(this.recipeForm.value['name'], 
     //                             this.recipeForm.value['description'], 
-    //                             this.recipeForm.value['imgPath'],
+    //                             this.recipeForm.value['imagePath'],
     //                             this.recipeForm.value['ingredients']);
     if(this.editMode){
       this.recipeService.updateRecipe(this.id, this.recipeForm.value);
@@ -83,7 +83,7 @@ export class RecipeAddedComponent implements OnInit {
     }
     this.recipeForm = new FormGroup({
       "name": new FormControl(recipeName, Validators.required),
-      "imgPath": new FormControl(recipeImagePath, Validators.required),
+      "imagePath": new FormControl(recipeImagePath, Validators.required),
       "description": new FormControl(recipeDescription, Validators.required),
       "ingredients": recipeIngredients
     })
