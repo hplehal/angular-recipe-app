@@ -8,12 +8,12 @@ import { Subject } from 'rxjs';
 export class RecipeService{
     recipeChanged = new Subject<Recipe[]>();
     private recipes: Recipe[] = [
-        new Recipe('Schnitzel', 'This is simply a tasty schnitzel',
+        new Recipe('Meatballs', 'This is Hartej Special Meatballs',
           'https://cdn.apartmenttherapy.info/image/upload/f_auto,q_auto:eco,c_fit,w_1460,h_1825/k%2FPhoto%2FRecipes%2F2019-08-how-to-juiciest-turkey-meatballs%2FHow-to-Make-the-Best-Juiciest-Turkey-Meatballs_055',[
             new Ingredient('Meat', 1), 
-            new Ingredient('Fries', 20)]),
+            new Ingredient('Tomato Sauce', 20)]),
         new Recipe('Burger', 'This is the fattest burger you\'ll have',
-        'https://cdn.apartmenttherapy.info/image/upload/f_auto,q_auto:eco,c_fit,w_1460,h_1825/k%2FPhoto%2FRecipes%2F2019-08-how-to-juiciest-turkey-meatballs%2FHow-to-Make-the-Best-Juiciest-Turkey-Meatballs_055',[
+        'https://www.thesun.co.uk/wp-content/uploads/2017/08/nintchdbpict000342894470.jpg?strip=all&w=720',[
             new Ingredient('Buns', 2),
             new Ingredient('Patty', 2),
             new Ingredient('Tomatoes', 1),
