@@ -3,6 +3,7 @@ import { Ingredient } from 'src/app/shared/ingredient.model';
 import { ShoppingListService } from '../shopping-list.service';
 import { NgForm } from '@angular/forms';
 import { Subscription } from 'rxjs';
+import { format } from 'url';
 
 
 @Component({
@@ -42,6 +43,16 @@ export class ShoppingListEditComponent implements OnInit {
     } else {
       this.shoppingListService.ingAdded(newIngredient);
     }
+    this.editMode = false;
+    f.reset();
+  }
+  onClear(){
+    this.shoppingListForm.reset();
+    this.editMode = false;
+  }
+  onDelete(){
+    this.shoppingListService.deleteIngredient(this.editedItemIndex);
+    this.onClear();
   }
 
   ngOnDestroy(){
