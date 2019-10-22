@@ -2,9 +2,11 @@ import { Recipe } from './recipe.model';
 import { Injectable } from '@angular/core';
 import { Ingredient } from '../shared/ingredient.model';
 import { ShoppingListService } from '../shopping-list/shopping-list.service';
+import { Subject } from 'rxjs';
 
 @Injectable()
 export class RecipeService{
+    recipeChanged = new Subject<Recipe[]>();
     private recipes: Recipe[] = [
         new Recipe('Schnitzel', 'This is simply a tasty schnitzel',
           'https://cdn.apartmenttherapy.info/image/upload/f_auto,q_auto:eco,c_fit,w_1460,h_1825/k%2FPhoto%2FRecipes%2F2019-08-how-to-juiciest-turkey-meatballs%2FHow-to-Make-the-Best-Juiciest-Turkey-Meatballs_055',[
@@ -32,5 +34,20 @@ export class RecipeService{
 
     addIngredientsToShoppingList(ingredients: Ingredient[]) {
       this.shoppingListService.addIngredients(ingredients);
+    }
+
+    addRecipe(recipe: Recipe){
+        this.recipes.push(recipe);
+        this.recipeChanged.next(this.recipes.slice());
+    }
+
+    updateRecipe(i: number, newRecipe: Recipe){
+        this.recipes[i] = newRecipe;
+        this.recipeChanged.next(this.recipes.slice());
+    }
+
+    deleteRecipe(i: number){
+        this.recipes.splice(i,1);
+        this.recipeChanged.next(this.recipes.slice());
     }
 }
